@@ -1,7 +1,8 @@
 export const fontSize = {
-  xxs: '12px',
-  xs: '16px',
-  s: '18px',
+  xxxs: '12px',
+  xxs: '16px',
+  xs: '18px',
+  s: '20px',
   m: '24px',
   l: '32px',
   xl: '48px',
