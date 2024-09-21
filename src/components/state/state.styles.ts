@@ -2,12 +2,7 @@ import styled from 'styled-components';
 import { color } from '~/styles/theme/color';
 import { fontSize } from '~/styles/theme/font-size';
 
-export const Container = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+export const Container = styled.div``;
 
 export const Wrapper = styled.div`
   display: grid;

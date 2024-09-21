@@ -27,5 +27,5 @@ export const Container = styled.button<{ type: ButtonType }>`
 
 export const Label = styled.p`
   font-family: medium;
-  font-size: ${fontSize.s};
+  font-size: ${fontSize.xs};
 `;
