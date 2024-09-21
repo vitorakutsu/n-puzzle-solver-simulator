@@ -1,3 +1,4 @@
 export const SCREEN_DEFINITIONS = {
   home: '/',
+  howItWorks: '/how-it-works',
 };
