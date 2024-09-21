@@ -2,16 +2,17 @@ import styled from 'styled-components';
 import { fontSize } from '~/styles/theme/font-size';
 
 export const Container = styled.div`
-  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  gap: 10%;
 `;
 
 export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 80px;
 `;
 
 export const TextWrapper = styled.div`
@@ -26,13 +27,14 @@ export const Title = styled.p`
 `;
 
 export const Paragraph = styled.p`
-  font-family: regular;
-  font-size: ${fontSize.m};
+  font-family: medium;
+  font-size: ${fontSize.s};
+  text-align: center;
 `;
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: space-around; /* Espaça os botões uniformemente */
-  gap: 16px; /* Adiciona espaço entre os botões */
-  margin-top: 16px;
+  justify-content: space-around;
+  gap: 16px;
+  margin-top: 8%;
 `;
