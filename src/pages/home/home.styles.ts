@@ -36,3 +36,8 @@ export const ButtonWrapper = styled.div`
   gap: 16px; /* Adiciona espaço entre os botões */
   margin-top: 16px;
 `;
+
+export const Subtitle = styled.p`
+  font-family: semi-bold;
+  font-size: ${fontSize.l};
+`;
