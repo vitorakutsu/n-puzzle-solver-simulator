@@ -38,8 +38,3 @@ export const ButtonWrapper = styled.div`
   gap: 16px;
   margin-top: 8%;
 `;
-
-export const Subtitle = styled.p`
-  font-family: semi-bold;
-  font-size: ${fontSize.l};
-`;

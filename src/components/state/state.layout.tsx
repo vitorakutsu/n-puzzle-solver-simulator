@@ -1,4 +1,4 @@
-import React, { DragEvent } from 'react';
+import { DragEvent } from 'react';
 import { Container, Tile, Wrapper } from './state.styles';
 
 interface IStateLayout {

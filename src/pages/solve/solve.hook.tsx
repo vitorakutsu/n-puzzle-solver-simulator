@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { aStarSearch } from '~/hooks/a*';
-import { Algorithm, ISolve, ISolveState, IShuffleState, SolveSteps, State, IInfoState } from './types';
+import { Algorithm, IInfoState, IShuffleState, ISolve, ISolveState, SolveSteps, State } from './types';
 
 const INITIAL_STATE = {
   final: [1, 2, 3, 4, 5, 6, 7, 8, 0],

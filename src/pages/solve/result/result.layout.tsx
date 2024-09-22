@@ -1,5 +1,6 @@
 import { State } from '~/components/state/state';
 import { useTranslation } from '~/translates/use-translation';
+import { IInfoState, SolveSteps } from '../types';
 import {
   ButtonWrapper,
   Column,
@@ -13,7 +14,6 @@ import {
   Title,
   Value,
 } from './result.styles';
-import { IInfoState, SolveSteps } from '../types';
 
 interface ISolveResultLayout {
   state: number[];

@@ -1,18 +1,18 @@
+import { State } from '~/components/state/state';
+import { useTranslation } from '~/translates/use-translation';
+import { SolveSteps } from '../types';
 import {
-  InfoWrapper,
-  TextWrapper,
-  Title,
-  Subtitle,
-  Paragraph,
   ButtonWrapper,
-  SecondaryButton,
+  InfoWrapper,
+  LightButton,
+  Paragraph,
   PrimaryButton,
   Row,
-  LightButton,
+  SecondaryButton,
+  Subtitle,
+  TextWrapper,
+  Title,
 } from './initial-state.styles';
-import { SolveSteps } from '../types';
-import { useTranslation } from '~/translates/use-translation';
-import { State } from '~/components/state/state';
 
 interface ISolveInitialStateLayout {
   state: number[];

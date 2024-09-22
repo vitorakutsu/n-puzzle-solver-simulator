@@ -13,8 +13,6 @@ import {
   Subtitle,
   Title,
 } from './how-it-works.styles';
-import { Button, ButtonType } from '~/components/button/button';
-import { noop } from 'lodash';
 
 interface IText {
   paragraph: string;

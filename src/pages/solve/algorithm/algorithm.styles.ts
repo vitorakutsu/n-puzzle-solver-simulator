@@ -2,12 +2,6 @@ import styled from 'styled-components';
 import { Button, ButtonType } from '~/components/button/button';
 import { fontSize } from '~/styles/theme/font-size';
 
-export const Container = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-`;
-
 export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;

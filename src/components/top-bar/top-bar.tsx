@@ -31,10 +31,16 @@ export const TopBar = () => {
         [TopBarOption.ABOUT]: <InfoOutlineIcon />,
       };
 
+      const redirect: { [key: string]: string } = {
+        [TopBarOption.START]: '/solve',
+        [TopBarOption.HOW_IT_WORKS]: '/how-it-works',
+        [TopBarOption.ABOUT]: '/about',
+      };
+
       return (
         <Option>
           {icon[option]}
-          <Text href='/'>{translate(`${option}`)}</Text>
+          <Text href={redirect[option]}>{translate(`${option}`)}</Text>
         </Option>
       );
     });

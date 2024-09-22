@@ -1,4 +1,3 @@
-import { noop } from 'lodash';
 import { Button, ButtonType } from '~/components/button/button';
 import { Screen } from '~/components/screen/screen';
 import { State } from '~/components/state/state';

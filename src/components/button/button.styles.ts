@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { ButtonType } from './button';
 import { color } from '~/styles/theme/color';
 import { fontSize } from '~/styles/theme/font-size';
+import { ButtonType } from './button';
 
 const getButtonColor = (type: ButtonType) => {
   switch (type) {
@@ -27,7 +27,7 @@ const getButtonPressedColor = (type: ButtonType) => {
     case ButtonType.LIGHT:
       return color.neutral.dark;
   }
-}
+};
 
 export const Container = styled.button<{ type: ButtonType }>`
   flex: 1;

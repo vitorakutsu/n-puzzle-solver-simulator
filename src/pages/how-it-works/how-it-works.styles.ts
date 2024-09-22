@@ -16,12 +16,6 @@ export const InfoWrapper = styled.div`
   flex: 1;
 `;
 
-export const TextWrapper = styled.div`
-  text-align: center;
-  flex-direction: column;
-  gap: 16px;
-`;
-
 export const Title = styled.p`
   font-family: semi-bold;
   font-size: ${fontSize.xl};
@@ -32,7 +26,7 @@ export const Subtitle = styled.p`
   font-family: semi-bold;
   font-size: ${fontSize.m};
   text-align: center;
-  margin-bottom: 8px;
+  margin-top: -16px;
 `;
 
 export const StepContainer = styled.ul`
