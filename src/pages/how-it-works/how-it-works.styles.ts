@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button, ButtonType } from '~/components/button/button';
 import { fontSize } from '~/styles/theme/font-size';
 
 export const Container = styled.div`
@@ -67,3 +68,7 @@ export const ButtonWrapper = styled.div`
   gap: 16px;
   margin-top: 8%;
 `;
+
+export const PrimaryButton = styled(Button).attrs({
+  type: ButtonType.PRIMARY,
+})``;

@@ -5,6 +5,7 @@ import {
   ButtonWrapper,
   Container,
   InfoWrapper,
+  PrimaryButton,
   StepContainer,
   StepParagraph,
   StepTitle,
@@ -24,7 +25,11 @@ interface ISteps {
   text: IText[];
 }
 
-export const HowItWorksLayout = () => {
+interface IHowItWorksLayout {
+  navigateToSolve: () => void;
+}
+
+export const HowItWorksLayout = ({ navigateToSolve }: IHowItWorksLayout) => {
   const translate = useTranslation('pages.howItWorks');
   const steps: ISteps[] = translate('steps', { returnObjects: 'true' }) as unknown as ISteps[];
 
@@ -52,7 +57,7 @@ export const HowItWorksLayout = () => {
 
   const renderButton = () => (
     <ButtonWrapper>
-      <Button label={translate('button.start')} onClick={noop} type={ButtonType.PRIMARY} />
+      <PrimaryButton label={translate('button.start')} onClick={navigateToSolve} />
     </ButtonWrapper>
   );
 
