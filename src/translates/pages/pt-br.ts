@@ -47,7 +47,10 @@ export const ptBrPageTranslations = {
       button: {
         chooseAnAlgorithm: 'Escolher um algoritmo',
         back: 'Voltar',
-        next: 'Próximo',
+        start: 'Iniciar',
+      },
+      radio: {
+        label: 'Escolha um algoritmo',
       },
     },
     howItWorks: {
@@ -105,6 +108,22 @@ export const ptBrPageTranslations = {
       ],
       button: {
         start: 'Começar',
+      },
+    },
+    processing: {
+      title: 'Resolvendo',
+    },
+    result: {
+      title: 'Pronto',
+      info: {
+        title: 'Informações da Resolução',
+        algorithm: 'Algoritmo:',
+        steps: 'Passos:',
+        time: 'Tempo:',
+      },
+      button: {
+        stepByStep: 'Ver passo a passo',
+        tryAgain: 'Tentar novamente',
       },
     },
   },
