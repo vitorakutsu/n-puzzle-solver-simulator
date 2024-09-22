@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { color } from '~/styles/theme/color';
-import { QuestionOutlineIcon } from '@chakra-ui/icons';
 import { fontSize } from '~/styles/theme/font-size';
 
 export const Container = styled.div`

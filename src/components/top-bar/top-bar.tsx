@@ -1,9 +1,9 @@
-import { ReactElement } from 'react';
+import { AtSignIcon, InfoOutlineIcon, QuestionOutlineIcon } from '@chakra-ui/icons';
 import i18n from 'i18next';
-import { Container, FlagImage, Logo, Option, Options, Text, Wrapper } from './top-bar.styles';
+import { ReactElement } from 'react';
 import { BrazilImage, LogoImage, UnitedStateImage } from '~/assets/images-mapping';
-import { AtSignIcon, InfoOutlineIcon, QuestionOutlineIcon, StarIcon } from '@chakra-ui/icons';
 import { useTranslation } from '~/translates/use-translation';
+import { Container, FlagImage, Logo, Option, Options, Text, Wrapper } from './top-bar.styles';
 
 enum TopBarOption {
   START = 'start',
