@@ -34,20 +34,27 @@ export const Paragraph = styled.p`
 
 export const ButtonWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   gap: 16px;
-  margin-top: 16px;
 `;
 
 export const Subtitle = styled.p`
   font-family: semi-bold;
-  font-size: ${fontSize.l};
+  font-size: ${fontSize.m};
+  margin-top: -32px;
 `;
 
-export const PrimaryButton = styled(Button).attrs({
-  type: ButtonType.PRIMARY,
+export const Row = styled.div`
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+`;
+
+export const TertiaryButton = styled(Button).attrs({
+  type: ButtonType.TERTIARY,
 })``;
 
-export const SecondaryButton = styled(Button).attrs({
-  type: ButtonType.SECONDARY,
+export const LightButton = styled(Button).attrs({
+  type: ButtonType.LIGHT,
 })``;
