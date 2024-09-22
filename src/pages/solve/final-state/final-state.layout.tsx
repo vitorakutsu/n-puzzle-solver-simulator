@@ -1,3 +1,4 @@
+import { State } from '~/components/state/state';
 import { useTranslation } from '~/translates/use-translation';
 import { SolveSteps } from '../types';
 import {
@@ -10,15 +11,22 @@ import {
   TextWrapper,
   Title,
 } from './final-state.styles';
-import { State } from '~/components/state/state';
 
 interface ISolveFinalStateLayout {
   state: number[];
+  toShuffle: boolean;
   onChangeState: (state: number[]) => void;
   onChangeStep: (step: SolveSteps) => void;
+  onShuffle: () => void;
 }
 
-export const SolveFinalStateLayout = ({ state, onChangeState, onChangeStep }: ISolveFinalStateLayout) => {
+export const SolveFinalStateLayout = ({
+  state,
+  toShuffle,
+  onChangeState,
+  onChangeStep,
+  onShuffle,
+}: ISolveFinalStateLayout) => {
   const translate = useTranslation('pages.finalState');
 
   const goNext = () => onChangeStep(SolveSteps.INITIAL_STATE);
@@ -33,7 +41,7 @@ export const SolveFinalStateLayout = ({ state, onChangeState, onChangeStep }: IS
 
   const renderButton = () => (
     <ButtonWrapper>
-      <SecondaryButton label={translate('button.shuffle')} onClick={goNext} />
+      <SecondaryButton label={translate('button.shuffle')} onClick={onShuffle} />
       <PrimaryButton label={translate('button.next')} onClick={goNext} />
     </ButtonWrapper>
   );
@@ -47,7 +55,7 @@ export const SolveFinalStateLayout = ({ state, onChangeState, onChangeStep }: IS
 
   return (
     <>
-      <State puzzleState={state} onChangePuzzleState={onChangeState} />
+      <State puzzleState={state} onChangePuzzleState={onChangeState} toShuffle={toShuffle} />
       {renderInfo()}
     </>
   );
