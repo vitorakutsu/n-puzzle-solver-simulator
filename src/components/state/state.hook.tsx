@@ -1,14 +1,23 @@
 import { useToast } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface IStateHook {
   puzzleState: number[];
   handleSwap: (dragIndex: number, dropIndex: number) => void;
 }
 
-export const useStateHook = (): IStateHook => {
+interface IState {
+  puzzleState?: number[];
+  onChangePuzzleState?: (newPuzzleState: number[]) => void;
+  toShuffle?: boolean;
+}
+
+export const useStateHook = ({ onChangePuzzleState, puzzleState, toShuffle }: IState): IStateHook => {
   const toast = useToast();
-  const [puzzleState, setPuzzleState] = useState([1, 2, 3, 4, 5, 6, 7, 8, 0]);
+
+  useEffect(() => {
+    toShuffle && handleShuffle();
+  }, [toShuffle]);
 
   const isValidMovement = (dragIndex: number, dropIndex: number): boolean => {
     const movements = [
@@ -28,9 +37,9 @@ export const useStateHook = (): IStateHook => {
 
   const handleSwap = (dragIndex: number, dropIndex: number) => {
     if (isValidMovement(dragIndex, dropIndex)) {
-      const newState = [...puzzleState];
+      const newState = [...(puzzleState ?? [])];
       [newState[dragIndex], newState[dropIndex]] = [newState[dropIndex], newState[dragIndex]];
-      setPuzzleState(newState);
+      onChangePuzzleState && onChangePuzzleState(newState);
     } else {
       toast({
         title: 'Movimento inválido',
@@ -42,5 +51,32 @@ export const useStateHook = (): IStateHook => {
     }
   };
 
-  return { puzzleState, handleSwap };
+  const handleShuffle = () => {
+    let newState = [...(puzzleState ?? [])];
+    const emptyIndex = newState.indexOf(0);
+
+    for (let i = 0; i < 50; i++) {
+      const possibleMoves = [
+        [1, 3],
+        [0, 2, 4],
+        [1, 5],
+        [0, 4, 6],
+        [1, 3, 5, 7],
+        [2, 4, 8],
+        [3, 7],
+        [4, 6, 8],
+        [5, 7],
+      ][newState.indexOf(0)];
+
+      const randomMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+      [newState[emptyIndex], newState[randomMove]] = [newState[randomMove], newState[emptyIndex]];
+    }
+
+    onChangePuzzleState && onChangePuzzleState(newState);
+  };
+
+  return {
+    puzzleState: puzzleState ?? [1, 2, 3, 4, 5, 6, 7, 8, 0],
+    handleSwap,
+  };
 };

@@ -10,10 +10,10 @@ export enum ButtonType {
 interface IButton {
   label: string;
   onClick: () => void;
-  type: ButtonType;
+  type?: ButtonType;
 }
 
-export const Button = ({ label, onClick, type }: IButton) => {
+export const Button = ({ label, onClick, type = ButtonType.PRIMARY }: IButton) => {
   return (
     <Container type={type} onClick={onClick}>
       <Label>{label}</Label>
