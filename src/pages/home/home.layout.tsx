@@ -7,9 +7,10 @@ import { ButtonWrapper, Container, InfoWrapper, Paragraph, TextWrapper, Title } 
 
 interface IHomeLayout {
   navigateToHowItWorks: () => void;
+  navigateToSolve: () => void;
 }
 
-export const HomeLayout = ({ navigateToHowItWorks }: IHomeLayout) => {
+export const HomeLayout = ({ navigateToHowItWorks, navigateToSolve }: IHomeLayout) => {
   const translate = useTranslation('pages.home');
 
   const renderText = () => (
@@ -22,7 +23,7 @@ export const HomeLayout = ({ navigateToHowItWorks }: IHomeLayout) => {
   const renderButton = () => (
     <ButtonWrapper>
       <Button type={ButtonType.LIGHT} label={translate('button.howItWorks')} onClick={navigateToHowItWorks} />
-      <Button type={ButtonType.PRIMARY} label={translate('button.start')} onClick={noop} />
+      <Button type={ButtonType.PRIMARY} label={translate('button.start')} onClick={navigateToSolve} />
     </ButtonWrapper>
   );
 
