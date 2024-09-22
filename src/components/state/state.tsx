@@ -2,13 +2,14 @@ import { useStateHook } from './state.hook';
 import { StateLayout } from './state.layout';
 
 interface IState {
-  puzzleState?: number[];
-  onChangePuzzleState?: (newPuzzleState: number[]) => void;
   isStatic?: boolean;
+  puzzleState?: number[];
+  toShuffle?: boolean;
+  onChangePuzzleState?: (newPuzzleState: number[]) => void;
 }
 
-export const State = ({ isStatic = false, onChangePuzzleState, puzzleState }: IState) => {
-  const properties = useStateHook({ onChangePuzzleState, puzzleState });
+export const State = ({ isStatic = false, puzzleState, toShuffle, onChangePuzzleState }: IState) => {
+  const properties = useStateHook({ puzzleState, toShuffle, onChangePuzzleState });
 
   return <StateLayout isStatic={isStatic} {...properties} />;
 };

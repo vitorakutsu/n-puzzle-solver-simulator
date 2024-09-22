@@ -1,5 +1,5 @@
 import { useToast } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 interface IStateHook {
   puzzleState: number[];
@@ -15,10 +15,6 @@ interface IState {
 export const useStateHook = ({ onChangePuzzleState, puzzleState, toShuffle }: IState): IStateHook => {
   const toast = useToast();
 
-  useEffect(() => {
-    toShuffle && handleShuffle();
-  }, [toShuffle]);
-
   const isValidMovement = (dragIndex: number, dropIndex: number): boolean => {
     const movements = [
       [1, 3],
@@ -31,7 +27,6 @@ export const useStateHook = ({ onChangePuzzleState, puzzleState, toShuffle }: IS
       [4, 6, 8],
       [5, 7],
     ];
-
     return movements[dragIndex].includes(dropIndex);
   };
 
@@ -53,9 +48,10 @@ export const useStateHook = ({ onChangePuzzleState, puzzleState, toShuffle }: IS
 
   const handleShuffle = () => {
     let newState = [...(puzzleState ?? [])];
-    const emptyIndex = newState.indexOf(0);
+    const shuffleTimes = 100;
+    for (let i = 0; i < shuffleTimes; i++) {
+      const emptyIndex = newState.indexOf(0);
 
-    for (let i = 0; i < 50; i++) {
       const possibleMoves = [
         [1, 3],
         [0, 2, 4],
@@ -66,7 +62,7 @@ export const useStateHook = ({ onChangePuzzleState, puzzleState, toShuffle }: IS
         [3, 7],
         [4, 6, 8],
         [5, 7],
-      ][newState.indexOf(0)];
+      ][emptyIndex];
 
       const randomMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
       [newState[emptyIndex], newState[randomMove]] = [newState[randomMove], newState[emptyIndex]];
@@ -74,6 +70,16 @@ export const useStateHook = ({ onChangePuzzleState, puzzleState, toShuffle }: IS
 
     onChangePuzzleState && onChangePuzzleState(newState);
   };
+
+  useEffect(() => {
+    let shuffleInterval: NodeJS.Timeout;
+
+    if (toShuffle) {
+      shuffleInterval = setInterval(handleShuffle, 300);
+    }
+
+    return () => clearInterval(shuffleInterval);
+  }, [toShuffle]);
 
   return {
     puzzleState: puzzleState ?? [1, 2, 3, 4, 5, 6, 7, 8, 0],

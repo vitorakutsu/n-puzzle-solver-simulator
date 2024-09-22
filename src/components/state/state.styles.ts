@@ -22,9 +22,9 @@ export const Tile = styled.div`
   width: 200px;
   cursor: ${(props) => (props.children ? 'grab' : 'default')};
   user-select: none;
-
   font-family: extra-bold;
   font-size: ${fontSize.l};
+  transition: background-color 0.3s;
 
   &:active {
     cursor: ${(props) => (props.children ? 'grabbing' : 'default')};
