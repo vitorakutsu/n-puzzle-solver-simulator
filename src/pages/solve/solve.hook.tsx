@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { aStarSearch } from '~/hooks/a*';
+import { aStarSearch } from '~/hooks/a-star-search';
 import { Algorithm, IInfoState, IShuffleState, ISolve, ISolveState, SolveSteps, State } from './types';
 
 const INITIAL_STATE = {
