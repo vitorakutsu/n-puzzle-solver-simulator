@@ -114,16 +114,19 @@ export const ptBrPageTranslations = {
       title: 'Resolvendo',
     },
     result: {
-      title: 'Pronto',
+      title: 'Pronto!',
       info: {
         title: 'Informações da Resolução',
         algorithm: 'Algoritmo:',
-        steps: 'Passos:',
+        openedList: 'Open List:',
+        closedList: 'Closed List:',
         time: 'Tempo:',
+        distance: 'Distância:',
       },
       button: {
         stepByStep: 'Ver passo a passo',
         tryAgain: 'Tentar novamente',
+        compare: 'Comparar algoritmos',
       },
     },
   },

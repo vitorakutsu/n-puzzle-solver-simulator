@@ -6,7 +6,7 @@ export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 80px;
+  gap: 64px;
 `;
 
 export const TextWrapper = styled.div`
@@ -61,3 +61,13 @@ export const TertiaryButton = styled(Button).attrs({
 export const SecondaryButton = styled(Button).attrs({
   type: ButtonType.SECONDARY,
 })``;
+
+export const PrimaryButton = styled(Button).attrs({
+  type: ButtonType.PRIMARY,
+})``;
+
+export const Row = styled.div`
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+`;

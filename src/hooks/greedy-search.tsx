@@ -1,8 +1,6 @@
 interface Node {
   state: number[];
-  g: number;
   h: number;
-  f: number;
   parent?: Node;
 }
 
@@ -32,22 +30,6 @@ const getManhattanDistance = (state: number[], final: number[]): number => {
   return distance;
 };
 
-// const getEuclideanDistance = (state: number[], final: number[]): number => {
-//   let distance = 0;
-//   for (let i = 0; i < state.length; i++) {
-//     const value = state[i];
-//     if (value !== 0) {
-//       const targetIndex = final.indexOf(value);
-//       const targetRow = Math.floor(targetIndex / 3);
-//       const targetCol = targetIndex % 3;
-//       const currentRow = Math.floor(i / 3);
-//       const currentCol = i % 3;
-//       distance += Math.sqrt(Math.pow(targetRow - currentRow, 2) + Math.pow(targetCol - currentCol, 2));
-//     }
-//   }
-//   return distance;
-// };
-
 const getNeighbors = (state: number[]): number[][] => {
   const neighbors: number[][] = [];
   const zeroIndex = state.indexOf(0);
@@ -74,7 +56,23 @@ const getNeighbors = (state: number[]): number[][] => {
   return neighbors;
 };
 
-export const aStarSearch = (
+// const getEuclideanDistance = (state: number[], final: number[]): number => {
+//   let distance = 0;
+//   for (let i = 0; i < state.length; i++) {
+//     const value = state[i];
+//     if (value !== 0) {
+//       const targetIndex = final.indexOf(value);
+//       const targetRow = Math.floor(targetIndex / 3);
+//       const targetCol = targetIndex % 3;
+//       const currentRow = Math.floor(i / 3);
+//       const currentCol = i % 3;
+//       distance += Math.sqrt(Math.pow(targetRow - currentRow, 2) + Math.pow(targetCol - currentCol, 2));
+//     }
+//   }
+//   return distance;
+// };
+
+export const greedySearch = (
   initialState: number[],
   finalState: number[],
   level: number,
@@ -82,17 +80,14 @@ export const aStarSearch = (
 ): { path: number[][]; openedList: number; closedList: number; time: number } => {
   const openList: Node[] = [];
   const closedList: Set<string> = new Set();
-  const nodeMap = new Map<string, Node>(); // Map para verificar rapidamente se um nó já está na Open List
+  const nodeMap = new Map<string, Node>();
 
   const startNode: Node = {
     state: initialState,
-    g: 0,
     h: isManhattan
       ? getManhattanDistance(initialState, finalState)
       : getMisplacedTiles(initialState, finalState),
-    f: 0,
   };
-  startNode.f = startNode.g + startNode.h;
 
   openList.push(startNode);
   nodeMap.set(startNode.state.toString(), startNode);
@@ -100,7 +95,7 @@ export const aStarSearch = (
   const startTime = performance.now();
 
   while (openList.length > 0) {
-    openList.sort((a, b) => a.f - b.f);
+    openList.sort((a, b) => a.h - b.h);
     const currentNode = openList.shift()!;
 
     if (currentNode.state.toString() === finalState.toString()) {
@@ -122,11 +117,9 @@ export const aStarSearch = (
     for (const neighbor of neighbors) {
       if (closedList.has(neighbor.toString())) continue;
 
-      let gScore = currentNode.g + 1;
       let hScore = isManhattan
         ? getManhattanDistance(neighbor, finalState)
         : getMisplacedTiles(neighbor, finalState);
-      let fScore = gScore + hScore;
 
       if (level === 2) {
         const secondLevelNeighbors = getNeighbors(neighbor);
@@ -134,22 +127,20 @@ export const aStarSearch = (
           const secondLevelHScore = isManhattan
             ? getManhattanDistance(secondNeighbor, finalState)
             : getMisplacedTiles(secondNeighbor, finalState);
-          fScore = Math.min(fScore, gScore + 1 + secondLevelHScore);
+          hScore = Math.min(hScore, secondLevelHScore);
         }
       }
 
       const neighborNode: Node = {
         state: neighbor,
-        g: gScore,
         h: hScore,
-        f: fScore,
         parent: currentNode,
       };
 
       if (!nodeMap.has(neighbor.toString())) {
         openList.push(neighborNode);
         nodeMap.set(neighbor.toString(), neighborNode);
-      } else if (fScore < nodeMap.get(neighbor.toString())!.f) {
+      } else if (hScore < nodeMap.get(neighbor.toString())!.h) {
         openList[openList.findIndex((n) => n.state.toString() === neighbor.toString())] = neighborNode;
         nodeMap.set(neighbor.toString(), neighborNode);
       }

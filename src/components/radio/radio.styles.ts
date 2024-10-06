@@ -54,6 +54,7 @@ export const Label = styled.p`
 `;
 
 export const RadioContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;

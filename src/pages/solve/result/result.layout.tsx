@@ -8,6 +8,8 @@ import {
   InfoTitle,
   InfoWrapper,
   Label,
+  PrimaryButton,
+  Row,
   SecondaryButton,
   TertiaryButton,
   TextWrapper,
@@ -20,9 +22,16 @@ interface ISolveResultLayout {
   info: IInfoState;
   onChangeStep: (step: SolveSteps) => void;
   onStepByStep: () => void;
+  onCompareAlgorithms: () => void;
 }
 
-export const SolveResultLayout = ({ state, info, onChangeStep, onStepByStep }: ISolveResultLayout) => {
+export const SolveResultLayout = ({
+  state,
+  info,
+  onChangeStep,
+  onStepByStep,
+  onCompareAlgorithms,
+}: ISolveResultLayout) => {
   const translate = useTranslation('pages.result');
 
   const goToStart = () => onChangeStep(SolveSteps.FINAL_STATE);
@@ -33,25 +42,36 @@ export const SolveResultLayout = ({ state, info, onChangeStep, onStepByStep }: I
     </TextWrapper>
   );
 
-  const renderInfo = (type: keyof IInfoState) => (
-    <Info>
-      <Label>{translate(`info.${type}`)}</Label>
-      <Value>{info[type]}</Value>
-    </Info>
-  );
+  const renderInfo = (type: keyof IInfoState) => {
+    let value: any = info[type];
+
+    if (type == 'time') value = `${Number(value).toFixed(2)}ms`;
+
+    return (
+      <Info>
+        <Label>{translate(`info.${type}`)}</Label>
+        <Value>{value}</Value>
+      </Info>
+    );
+  };
 
   const renderInfoSection = () => (
     <Column>
       <InfoTitle>{translate('info.title')}</InfoTitle>
       {renderInfo('algorithm')}
-      {renderInfo('steps')}
+      {renderInfo('openedList')}
+      {renderInfo('closedList')}
       {renderInfo('time')}
+      {renderInfo('distance')}
     </Column>
   );
 
   const renderButton = () => (
     <ButtonWrapper>
-      <SecondaryButton label={translate('button.stepByStep')} onClick={onStepByStep} />
+      <Row>
+        <PrimaryButton label={translate('button.compare')} onClick={onCompareAlgorithms} />
+        <SecondaryButton label={translate('button.stepByStep')} onClick={onStepByStep} />
+      </Row>
       <TertiaryButton label={translate('button.tryAgain')} onClick={goToStart} />
     </ButtonWrapper>
   );

@@ -2,6 +2,7 @@ import { AtSignIcon, InfoOutlineIcon, QuestionOutlineIcon } from '@chakra-ui/ico
 import i18n from 'i18next';
 import { ReactElement } from 'react';
 import { BrazilImage, LogoImage, UnitedStateImage } from '~/assets/images-mapping';
+import { useHref } from 'react-router-dom';
 import { useTranslation } from '~/translates/use-translation';
 import { Container, FlagImage, Logo, Option, Options, Text, Wrapper } from './top-bar.styles';
 
@@ -14,6 +15,7 @@ enum TopBarOption {
 export const TopBar = () => {
   const translate = useTranslation('components.topBar.options');
   const language = i18n.language;
+
   const changeLanguage = () => {
     const newLanguage = language === 'en-US' ? 'pt-BR' : 'en-US';
     i18n.changeLanguage(newLanguage);

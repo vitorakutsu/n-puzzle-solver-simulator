@@ -16,6 +16,9 @@ export const SolveLayout = ({
   onChangeState,
   onSelectAlgorithm,
   onChangeStep,
+  onSelectDistance,
+  onSelectSearchLevel,
+  onCompareAlgorithms,
   handleShuffle,
   handleSolve,
   onStepByStep,
@@ -44,6 +47,8 @@ export const SolveLayout = ({
     <SolveAlgorithmLayout
       state={state.initial}
       onSelectAlgorithm={onSelectAlgorithm}
+      onSelectSearchLevel={onSelectSearchLevel}
+      onSelectDistance={onSelectDistance}
       onChangeStep={onChangeStep}
       handleSolve={handleSolve}
     />
@@ -57,6 +62,7 @@ export const SolveLayout = ({
       info={info}
       onChangeStep={onChangeStep}
       onStepByStep={onStepByStep}
+      onCompareAlgorithms={onCompareAlgorithms}
     />
   );
 

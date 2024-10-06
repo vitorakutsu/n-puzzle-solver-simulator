@@ -14,18 +14,23 @@ export interface ISolve {
   onChangeStep: (step: SolveSteps) => void;
   onChangeState: (type: State, newState: number[]) => void;
   onSelectAlgorithm: (algorithm: string) => void;
+  onSelectSearchLevel: (level: string) => void;
+  onSelectDistance: (distance: string) => void;
+  onCompareAlgorithms: () => void;
   handleShuffle: (type: State) => void;
   handleSolve: () => void;
   onStepByStep: () => void;
 }
 
-export type Algorithm = 'A*' | 'BFS' | 'DFS';
+export type Algorithm = 'A*' | 'Greedy';
 export type State = 'final' | 'initial';
 
 export interface ISolveState {
   final: number[];
   initial: number[];
   algorithm: Algorithm;
+  level: number;
+  distance: string;
 }
 
 export interface IShuffleState {
@@ -34,8 +39,10 @@ export interface IShuffleState {
 }
 
 export interface IInfoState {
-  path: number[][];
-  steps: number;
-  time: number;
-  algorithm: Algorithm;
+  path?: number[][];
+  openedList?: number;
+  closedList?: number;
+  time?: number;
+  algorithm?: Algorithm;
+  distance?: string;
 }

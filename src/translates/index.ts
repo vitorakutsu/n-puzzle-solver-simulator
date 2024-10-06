@@ -4,6 +4,8 @@ import { ptBrPageTranslations } from './pages/pt-br';
 import { enUsPageTranslations } from './pages/en-us';
 import { ptBrComponentTranslations } from './components/pt-br';
 import { enUsComponentTranslations } from './components/en-us';
+import { ptBrDocumentTranslations } from './document/pt-br';
+import { enUsDocumentTranslations } from './document/en-us';
 
 export const initializeI18n = (): void => {
   const i18nConfig: InitOptions = {
@@ -12,12 +14,14 @@ export const initializeI18n = (): void => {
         translations: {
           ...ptBrPageTranslations,
           ...ptBrComponentTranslations,
+          ...ptBrDocumentTranslations,
         },
       },
       'en-US': {
         translations: {
           ...enUsPageTranslations,
           ...enUsComponentTranslations,
+          ...enUsDocumentTranslations,
         },
       },
     },

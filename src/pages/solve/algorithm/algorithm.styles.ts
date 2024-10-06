@@ -6,7 +6,7 @@ export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 80px;
+  gap: 64px;
 `;
 
 export const TextWrapper = styled.div`
@@ -22,7 +22,7 @@ export const Title = styled.p`
 
 export const Paragraph = styled.p`
   font-family: medium;
-  font-size: ${fontSize.s};
+  font-size: ${fontSize.xs};
   text-align: center;
 `;
 

@@ -17,6 +17,8 @@ import {
 interface ISolveAlgorithmLayout {
   state: number[];
   onSelectAlgorithm: (algorithm: string) => void;
+  onSelectSearchLevel: (level: string) => void;
+  onSelectDistance: (distance: string) => void;
   onChangeStep: (step: SolveSteps) => void;
   handleSolve: () => void;
 }
@@ -25,6 +27,8 @@ export const SolveAlgorithmLayout = ({
   state,
   onChangeStep,
   onSelectAlgorithm,
+  onSelectDistance,
+  onSelectSearchLevel,
   handleSolve,
 }: ISolveAlgorithmLayout) => {
   const translate = useTranslation('pages.algorithm');
@@ -33,7 +37,17 @@ export const SolveAlgorithmLayout = ({
 
   const options = [
     { label: 'A* Search', value: 'A*' },
-    { label: 'BestFirst', value: 'BFS' },
+    { label: 'Greedy Search', value: 'Greedy' },
+  ];
+
+  // const levels = [
+  //   { label: 'Nível 1', value: '1' },
+  //   { label: 'Nível 2', value: '2' },
+  // ];
+
+  const distance = [
+    { label: 'Manhattan', value: 'Manhattan' },
+    { label: 'Misplaced Tiles', value: 'Misplaced' },
   ];
 
   const renderText = () => (
@@ -47,6 +61,10 @@ export const SolveAlgorithmLayout = ({
   const renderButton = () => (
     <ButtonWrapper>
       <Radio label={translate('radio.label')} options={options} onSelect={onSelectAlgorithm} />
+      <Row>
+        {/* <Radio label={''} options={levels} onSelect={onSelectSearchLevel} /> */}
+        <Radio label={''} options={distance} onSelect={onSelectDistance} />
+      </Row>
       <Row>
         <LightButton label={translate('button.back')} onClick={goBack} />
         <TertiaryButton label={translate('button.start')} onClick={handleSolve} />
